@@ -10,6 +10,10 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 
+import { FormControl, TextField } from '@mui/material';
+
+import DateRange from '../DateRange/DateRange';
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
@@ -53,8 +57,10 @@ export default function AddPlanDialog(props) {
     };
 
     return (
-        <div>
+        <div className="row">
             <BootstrapDialog
+                fullWidth={true}
+                maxWidth="md"
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
                 open={props.dialogOpen}>
@@ -64,24 +70,34 @@ export default function AddPlanDialog(props) {
                 </BootstrapDialogTitle>
 
                 <DialogContent dividers>
-                    <Typography gutterBottom>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
-                        magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
-                        ullamcorper nulla non metus auctor fringilla.
-                    </Typography>
+
+                    <form>
+                        <div className="col-12 mb-3">
+                            <FormControl style={{width: '100%'}}>
+                                <TextField id="plan-title" label="Başlık Giriniz" fullWidth={true} multiline={true} minRows={1} maxRows={5} variant="outlined" />
+                            </FormControl>
+                        </div>
+
+                        <div className='row'>
+                            <div className='col-6 mb-3 date-range'>
+                                <FormControl>
+                                    <DateRange label="Etkinlik Başlangıç Tarihi" />
+                                </FormControl>
+                            </div>
+                            <div className='col-6 mb-3 d-flex justify-content-end date-range'>
+                                <FormControl>
+                                    <DateRange label="Etkinlik Bitiş Tarihi" />
+                                </FormControl>
+                            </div>
+                        </div>
+                    </form>
+
                 </DialogContent>
+
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
-                        Save changes
+                    {/* onClick={handleClose} */}
+                    <Button autoFocus variant="contained" >
+                        Etkinliği Başlat
                     </Button>
                 </DialogActions>
 

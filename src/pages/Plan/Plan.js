@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
 
-import AddPlanDialog from './AddPlanDialog';
+import AddPlanDialog from '../../components/PlanDialog/AddPlanDialog';
 
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+
 
 function Plan() {
   let [dialogState, setOpen] = useState(false);
@@ -33,7 +34,6 @@ function Plan() {
         </div>
 
         <div className="row">
-
 
         </div>
 
